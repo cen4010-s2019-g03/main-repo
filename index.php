@@ -32,11 +32,11 @@
 			<div class="text-left">
 				<span class="display-4">
 					<i><small><span class="text-muted">Team 3:</span></small>
-					<strong>“Les Misérables”</strong></i>
+					<strong>Code Nxt</strong></i>
 				</span>
 			</div>
 			<h1 id="about-us">About Us</h1>
-			<p>Welcome to the website for Team 3! (a.k.a. team “Les Misérables”)</p>
+			<p>Welcome to the website for Team 3! (a.k.a. team <strong>Code Nxt</strong>)</p>
 			<p>We have a diverse team with a variety of experience in software engineering. Our team is distributed across multiple cities, and we are using online collaboration tools&mdash;like Trello&mdash;to collaborate effectively.</p>
 			<p>Click the button below to visit the Github respository for our class project.</p>
 			<a href="https://github.com/orgs/cen4010-s2019-g03/" class="btn btn-primary"><i class="fab fa-github"></i> GitHub repo</a>
@@ -88,7 +88,7 @@
 								Kevin<br />Lewitzke
 							</h3>
 							<p>&nbsp;</p>
-							<a href="kl_about.php">Visit page</a>
+							<a href="http://lamp.eng.fau.edu/~klewitzke2017/kl_about.php">Visit page</a>
 						</div>
 						<img class="card-img-right flex-auto d-none d-md-block" src="assets/kl_pic_1.jpg" width="200" height="200" alt="Card image cap">
 					</div>
