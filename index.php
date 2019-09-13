@@ -2,14 +2,14 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="UTF-8">
-		<title>CEN 4010 &bull; Spring 2019 &bull; Group 3</title>
+		<title>CEN 4010 &bull; Fall 2019 &bull; Team 3</title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Roboto:100,300,400,500,700,900,100i,300i,400i,500i,700i,900i">
 		<link rel="stylesheet" href="stylesheet.css">
 	</head>
 	<body>
 		<nav class="navbar sticky-top navbar-expand-lg navbar-light shadow-sm" style="background-color: white;">
-			<a class="navbar-brand" href="#about-us"><i class="fas fa-laptop-code"></i> Team 3</a>
+			<a class="navbar-brand" href="#about-us"><i class="fas fa-heart text-danger"></i> <i class="fas fa-laptop-code"></i> Team 3</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 			</button>
@@ -29,11 +29,19 @@
 			</div>
 		</nav>
 		<div class="container">
+			<div class="text-left">
+				<span class="display-4">
+					<i><small><span class="text-muted">Team 3:</span></small>
+					<strong>“Les Misérables”</strong></i>
+				</span>
+			</div>
 			<h1 id="about-us">About Us</h1>
-			Some text will go here.<br />
+			<p>Welcome to the website for Team 3! (a.k.a. team “Les Misérables”)</p>
+			<p>We have a diverse team with a variety of experience in software engineering. Our team is distributed across multiple cities, and we are using online collaboration tools&mdash;like Trello&mdash;to collaborate effectively.</p>
+			<p>Click the button below to visit the Github respository for our class project.</p>
 			<a href="https://github.com/orgs/cen4010-s2019-g03/" class="btn btn-primary"><i class="fab fa-github"></i> GitHub repo</a>
 			<hr />
-			<h1 id="team">Team</h1>
+			<h1 id="team">Our Team</h1>
 			<div class="row mb-2">
 				<div class="col-md-6">
 					<div class="card flex-md-row mb-4 box-shadow h-md-250" id="jeff-campbell">
@@ -41,10 +49,10 @@
 							<h3>
 								Jeff<br />Campbell
 							</h3>
-							<p>Bio introduction here.</p>
-							<a href="lamp.eng.fau.edu/~jeffcampbell2016/m0">Continue reading</a>
+							<p>&nbsp;</p>
+							<a href="http://lamp.eng.fau.edu/~jeffcampbell2016/m0">Visit page</a>
 						</div>
-						<img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
+						<img height="200" width="200" class="card-img-right flex-auto d-none d-md-block" src="assets/jc_pic_1.jpg" alt="Card image cap">
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -53,10 +61,10 @@
 							<h3>
 								Sharon<br />Freystaetter
 							</h3>
-							<p>Bio introduction here.</p>
-							<a href="http://lamp.eng.fau.edu/~jeffcampbell2016/m0">Continue reading</a>
+							<p>&nbsp;</p>
+							<a href="#">&nbsp;</a>
 						</div>
-						<img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
+						<img class="invisible card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x200?theme=thumb" alt="Card image cap">
 					</div>
 				</div>
 			</div>
@@ -67,10 +75,10 @@
 							<h3>
 								Francois<br />Joseph
 							</h3>
-							<p>Bio introduction here.</p>
-							<a href="#">Continue reading</a>
+							<p>&nbsp;</p>
+							<a href="#">&nbsp;</a>
 						</div>
-						<img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
+						<img class="invisible card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x200?theme=thumb" alt="Card image cap">
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -79,10 +87,10 @@
 							<h3>
 								Kevin<br />Lewitzke
 							</h3>
-							<p>Bio introduction here.</p>
-							<a href="#">Continue reading</a>
+							<p>&nbsp;</p>
+							<a href="kl_about.php">Visit page</a>
 						</div>
-						<img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
+						<img class="card-img-right flex-auto d-none d-md-block" src="assets/kl_pic_1.jpg" width="200" height="200" alt="Card image cap">
 					</div>
 				</div>
 			</div>
