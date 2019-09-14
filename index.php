@@ -78,7 +78,7 @@
 							<p>&nbsp;</p>
 							<a href="#">&nbsp;</a>
 						</div>
-						<img class="invisible card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x200?theme=thumb" alt="Card image cap">
+						<img class="invisible card-img-right flex-auto d-none d-md-block" data-src="assets/francois.jpg" alt="Card image cap">
 					</div>
 				</div>
 				<div class="col-md-6">
