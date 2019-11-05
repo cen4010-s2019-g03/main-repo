@@ -11,10 +11,10 @@
 		<!-- Site CSS -->
 		<link rel="stylesheet" href="campusLive.css">
 		
-		<title>campusLive</title>
+		<title>CampusLive</title>
 	</head>
 	<body>
-		<h1>campusLive Dashboard</h1>
+		<h1>CampusLive Dashboard</h1>
 		<div class="col-sm-6 offset-sm-3">
 			<div class="container">
 				<div class="row">
