@@ -1,5 +1,8 @@
 <?php
 session_start();
+$conn = new mysqli('localhost','cen4010fal19_g03','h4sRH3MC+n','cen4010fal19_g03');
+$result = $conn->query("SELECT * FROM `Events` JOIN `Users` ON `Events`.`created_by` = `Users`.`znum` ORDER BY `event_date` ASC, `event_time` ASC");
+$conn->close();
 ?>
 <!doctype html>
 <html lang="en">
@@ -14,11 +17,14 @@ session_start();
 		<!-- Site CSS -->
 		<link rel="stylesheet" href="campusLive.css">
 		
-		<title>CampusLive</title>
+		<title>campusLive</title>
 	</head>
-	<body style="background-color:#F4F6F6">
-		<h1 id="login-h1">CampusLive</h1>
-		<div class="col-sm-6 offset-sm-3" id="login-page-form">
+	<body>
+		<h1>Upcoming Events</h1>
+		<div class="text-left ml-3 mb-2">
+			<a href="dashboard.php"><button type="button" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Go Back</button></a>
+		</div>
+		<div class="col-sm-12">
 			<?php
 			if(isset($_SESSION['alerts'])){
 				foreach($_SESSION['alerts'] as $alert){
@@ -27,18 +33,28 @@ session_start();
 				unset($_SESSION['alerts']);
 			}
 			?>
-		
-			<form id="loginForm" action="db_process/login_process.php" method="POST">
-				<div class="form-group">
-					<label for="username">Username</label>
-					<input type="text" class="form-control" name="username" id="username" placeholder="Enter your username">
-				</div>
-				<div class="form-group">
-					<label for="password">Password</label>
-					<input type="password" class="form-control" name="password" id="password" placeholder="Enter your password">
-				</div>
-				<div id="btn"><button type="submit" class="btn btn-primary" name="submit" id="submit">Login</button></div>
-			</form>
+			<table class="table mt-2">
+				<thead>
+					<tr>
+						<th scope="col">Event Name</th>
+						<th scope="col">Location</th>
+						<th scope="col">Date and Time</th>
+						<th scope="col">Hosted By</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+					if ($result->num_rows > 0) {
+						// output data of each row
+						while($row = $result->fetch_assoc()) {
+							echo('<tr><td>' . $row['event_name'] . '</td><td>' . $row['event_location'] . '</td><td>' . $row['event_date'] . ' ' . $row['event_time'] . '</td><td>' . $row['first'] . ' ' . $row['last'] . '</td></tr>');
+						}
+					} else {
+						echo('<tr><td colspan="4">No data to display.</td></tr>');
+					}
+					?>
+				</tbody>
+			</table>
 		</div>
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

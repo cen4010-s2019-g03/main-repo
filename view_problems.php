@@ -1,10 +1,11 @@
 <?php
+session_start();
 $conn = new mysqli('localhost','cen4010fal19_g03','h4sRH3MC+n','cen4010fal19_g03');
 if(isset($_GET['dateReported']) and isset($_GET['reportedBy']) and isset($_GET['location']) and isset($_GET['description'])){
-	$result = $conn->query("SELECT * FROM `Issues` JOIN `Students` ON `Issues`.`reported_by` = `Students`.`znum` WHERE `date_time_reported` >= '" . (empty($_GET['dateReported']) ? '1000-01-01' : $_GET['dateReported']) . "' AND `date_time_reported` < '" . (empty($_GET['dateReported']) ? '9999-12-31' : date('Y-m-d', strtotime('+1 day', strtotime($_GET['dateReported'])))) . "' AND CONCAT(UPPER(`last`), ', ',UPPER(`first`)) LIKE '%" . strtoupper($_GET['reportedBy']) . "%' AND UPPER(`title`) LIKE '%" . strtoupper($_GET['description']) . "%' AND UPPER(`location`) LIKE '%" . strtoupper($_GET['location']) . "%' ORDER BY `date_time_reported` ASC");
+	$result = $conn->query("SELECT * FROM `Issues` JOIN `Users` ON `Issues`.`reported_by` = `Users`.`znum` WHERE `date_time_reported` >= '" . (empty($_GET['dateReported']) ? '1000-01-01' : $_GET['dateReported']) . "' AND `date_time_reported` < '" . (empty($_GET['dateReported']) ? '9999-12-31' : date('Y-m-d', strtotime('+1 day', strtotime($_GET['dateReported'])))) . "' AND CONCAT(UPPER(`last`), ', ',UPPER(`first`)) LIKE '%" . strtoupper($_GET['reportedBy']) . "%' AND UPPER(`title`) LIKE '%" . strtoupper($_GET['description']) . "%' AND UPPER(`location`) LIKE '%" . strtoupper($_GET['location']) . "%' ORDER BY `date_time_reported` ASC");
 }
 else{
-	$result = $conn->query("SELECT * FROM `Issues` JOIN `Students` ON `Issues`.`reported_by` = `Students`.`znum` ORDER BY `date_time_reported` ASC");
+	$result = $conn->query("SELECT * FROM `Issues` JOIN `Users` ON `Issues`.`reported_by` = `Users`.`znum` ORDER BY `date_time_reported` ASC");
 }
 $conn->close();
 ?>
@@ -29,6 +30,14 @@ $conn->close();
 			<a href="dashboard.php"><button type="button" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Go Back</button></a>
 		</div>
 		<div class="col-sm-12">
+			<?php
+			if(isset($_SESSION['alerts'])){
+				foreach($_SESSION['alerts'] as $alert){
+					echo('<div class="alert alert-' . $alert[0] . '">' . $alert[1] . '</div>');
+				}
+				unset($_SESSION['alerts']);
+			}
+			?>
 			<form action="view_problems.php" class="border" id="viewProblemsForm" method="GET">
 				<div class="row m-2">
 					<div class="col-md-5 form-group order-md-1">
@@ -72,7 +81,7 @@ $conn->close();
 					if ($result->num_rows > 0) {
 						// output data of each row
 						while($row = $result->fetch_assoc()) {
-							echo('<tr><td>' . $row['title'] . '</td><td>' . $row['date_time_reported'] . '</td><td>' . $row['location'] . '</td><td>' . $row['last'] . ', ' . $row['first'] . '</td></tr>');
+							echo('<tr><td><a href="problem_detail.php?id=' . $row['entry_id'] . '">' . $row['title'] . '</a></td><td>' . $row['date_time_reported'] . '</td><td>' . $row['location'] . '</td><td>' . $row['last'] . ', ' . $row['first'] . '</td></tr>');
 						}
 					} else {
 						echo('<tr><td colspan="4">No data to display.</td></tr>');
