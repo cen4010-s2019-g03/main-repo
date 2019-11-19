@@ -20,13 +20,13 @@
 				<div class="row">
 					<div class="col-sm border">
 						<h3>Campus Problems</h3>
-						<p>Report a Campus Problem</p>
+						<p><a href="report_problem.php">Report a Campus Problem</a></p>
 						<p><a href="view_problems.php">View Reported Problems</a></p>
 					</div>
 					<div class="col-sm border">
 						<h3>Campus Events</h3>
-						<p>View Campus Events</p>
-						<p>Add Event</p>
+						<p><a href="upcoming_events.php">View Campus Events</a></p>
+						<p><a href="schedule_event.php">Add Event</a></p>
 					</div>
 				</div>
 			</div>
