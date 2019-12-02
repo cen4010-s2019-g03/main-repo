@@ -1,5 +1,5 @@
 <?php
-session_start();
+require('session_info.php');
 $conn = new mysqli('localhost','cen4010fal19_g03','h4sRH3MC+n','cen4010fal19_g03');
 if(isset($_GET['dateReported']) and isset($_GET['reportedBy']) and isset($_GET['location']) and isset($_GET['description'])){
 	$result = $conn->query("SELECT * FROM `Issues` JOIN `Users` ON `Issues`.`reported_by` = `Users`.`znum` WHERE `date_time_reported` >= '" . (empty($_GET['dateReported']) ? '1000-01-01' : $_GET['dateReported']) . "' AND `date_time_reported` < '" . (empty($_GET['dateReported']) ? '9999-12-31' : date('Y-m-d', strtotime('+1 day', strtotime($_GET['dateReported'])))) . "' AND CONCAT(UPPER(`last`), ', ',UPPER(`first`)) LIKE '%" . strtoupper($_GET['reportedBy']) . "%' AND UPPER(`title`) LIKE '%" . strtoupper($_GET['description']) . "%' AND UPPER(`location`) LIKE '%" . strtoupper($_GET['location']) . "%' ORDER BY `date_time_reported` ASC");
@@ -12,6 +12,17 @@ $conn->close();
 <!doctype html>
 <html lang="en">
 	<head>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153631369-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-153631369-1');
+</script>
+
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,6 +36,7 @@ $conn->close();
 		<title>campusLive</title>
 	</head>
 	<body>
+		<?php include('header.php'); ?>
 		<h1>View Reported Problems</h1>
 		<div class="text-left ml-3 mb-2">
 			<a href="dashboard.php"><button type="button" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Go Back</button></a>

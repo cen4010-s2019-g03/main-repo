@@ -1,9 +1,29 @@
 <?php
 session_start();
+if(isset($_SESSION['znum'])){
+	unset($_SESSION['znum']);
+	if(!isset($_SESSION['alerts'])) {
+		$_SESSION['alerts'] = array();
+	}
+	array_push($_SESSION['alerts'], array('info', 'You have successfully logged out.'));
+}
 ?>
 <!doctype html>
 <html lang="en">
 	<head>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153631369-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-153631369-1');
+</script>
+
+
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

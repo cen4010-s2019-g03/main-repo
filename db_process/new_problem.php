@@ -1,5 +1,5 @@
 <?php
-session_start();
+require('../session_info.php');
 error_reporting(E_ALL);
 ini_set('display_errors',1);
 
@@ -53,7 +53,7 @@ else {
 	}
 	
 	$conn = new mysqli('localhost','cen4010fal19_g03','h4sRH3MC+n','cen4010fal19_g03');
-	$sql = "INSERT INTO Issues (reported_by, date_time_reported, title, location, type, description, priority, status, photo_file_name) VALUES ('" . $_SESSION['znum'] . "', NOW(), '" . $_POST['description'] . "', '" . $_POST['location'] . "', 1, '" . $_POST['description'] . "', 1, 1, " . (isset($uniq_id) ? "'" . $uniq_id . '.' . $file_ext . "'" : "NULL") . ")";
+	$sql = "INSERT INTO Issues (reported_by, date_time_reported, title, location, type, description, priority, status, photo_file_name) VALUES ('" . $_SESSION['znum'] . "', NOW(), '" . $_POST['title'] . "', '" . $_POST['location'] . "', 1, '" . $_POST['description'] . "', " . $_POST['priority'] . ", 0, " . (isset($uniq_id) ? "'" . $uniq_id . '.' . $file_ext . "'" : "NULL") . ")";
 	
 	if ($conn->query($sql) === TRUE) {
 		if(!isset($_SESSION['alerts'])) {
