@@ -1,5 +1,5 @@
 <?php
-session_start();
+require('session_info.php');
 $conn = new mysqli('localhost','cen4010fal19_g03','h4sRH3MC+n','cen4010fal19_g03');
 $result = $conn->query("SELECT * FROM `Events` JOIN `Users` ON `Events`.`created_by` = `Users`.`znum` ORDER BY `event_date` ASC, `event_time` ASC");
 $conn->close();
@@ -7,6 +7,18 @@ $conn->close();
 <!doctype html>
 <html lang="en">
 	<head>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153631369-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-153631369-1');
+</script>
+
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,6 +32,7 @@ $conn->close();
 		<title>campusLive</title>
 	</head>
 	<body>
+		<?php include('header.php'); ?>
 		<h1>Upcoming Events</h1>
 		<div class="text-left ml-3 mb-2">
 			<a href="dashboard.php"><button type="button" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Go Back</button></a>
@@ -47,7 +60,7 @@ $conn->close();
 					if ($result->num_rows > 0) {
 						// output data of each row
 						while($row = $result->fetch_assoc()) {
-							echo('<tr><td>' . $row['event_name'] . '</td><td>' . $row['event_location'] . '</td><td>' . $row['event_date'] . ' ' . $row['event_time'] . '</td><td>' . $row['first'] . ' ' . $row['last'] . '</td></tr>');
+							echo('<tr><td><a href="event_detail.php?id=' . $row['event_id'] . '">' . $row['event_name'] . '</a></td><td>' . $row['event_location'] . '</td><td>' . date('m/d/Y', strtotime($row['event_date'])) . ' ' . date('g:i A', strtotime($row['event_time'])) . '</td><td>' . $row['first'] . ' ' . $row['last'] . '</td></tr>');
 						}
 					} else {
 						echo('<tr><td colspan="4">No data to display.</td></tr>');

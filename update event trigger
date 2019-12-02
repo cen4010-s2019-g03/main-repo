@@ -1,0 +1,54 @@
+DELIMITER $$
+CREATE TRIGGER events_update AFTER UPDATE ON Events
+    FOR EACH ROW
+    BEGIN
+        IF
+        NEW.event_name <> OLD.event_name or (NEW.event_name is null and OLD.event_name is not null) or (NEW.event_name is not null and OLD.event_name is null)
+        THEN
+        INSERT INTO History(rec_type, foreign_id, description, insert_date_time) VALUES ('Event', NEW.event_id, concat('Event name changed from ', ifnull(OLD.event_name, 'null'), ' to ', ifnull(NEW.event_name, 'null')), now());
+        END IF;
+        
+        IF
+        NEW.event_date <> OLD.event_date or (NEW.event_date is null and OLD.event_date is not null) or (NEW.event_date is not null and OLD.event_date is null)
+        THEN
+        INSERT INTO History(rec_type, foreign_id, description, insert_date_time) VALUES ('Event', NEW.event_id, concat('Event date changed from ', ifnull(OLD.event_date, 'null'), ' to ', ifnull(NEW.event_date, 'null')), now());
+        END IF;
+        
+        IF
+        NEW.event_time <> OLD.event_time or (NEW.event_time is null and OLD.event_time is not null) or (NEW.event_time is not null and OLD.event_time is null)
+        THEN
+        INSERT INTO History(rec_type, foreign_id, description, insert_date_time) VALUES ('Event', NEW.event_id, concat('Event time changed from ', ifnull(OLD.event_time, 'null'), ' to ', ifnull(NEW.event_time, 'null')), now());
+        END IF;
+        
+        IF
+        NEW.event_location <> OLD.event_location or (NEW.event_location is null and OLD.event_location is not null) or (NEW.event_location is not null and OLD.event_location is null)
+        THEN
+        INSERT INTO History(rec_type, foreign_id, description, insert_date_time) VALUES ('Event', NEW.event_id, concat('Event location changed from ', ifnull(OLD.event_location, 'null'), ' to ', ifnull(NEW.event_location, 'null')), now());
+        END IF;
+        
+        IF
+        NEW.created_by <> OLD.created_by or (NEW.created_by is null and OLD.created_by is not null) or (NEW.created_by is not null and OLD.created_by is null)
+        THEN
+        INSERT INTO History(rec_type, foreign_id, description, insert_date_time) VALUES ('Event', NEW.event_id, concat('Created by changed from ', ifnull(OLD.created_by, 'null'), ' to ', ifnull(NEW.created_by, 'null')), now());
+        END IF;
+        
+        IF
+        NEW.event_status <> OLD.event_status or (NEW.event_status is null and OLD.event_status is not null) or (NEW.event_status is not null and OLD.event_status is null)
+        THEN
+        INSERT INTO History(rec_type, foreign_id, description, insert_date_time) VALUES ('Event', NEW.event_id, concat('Event status changed from ', ifnull(OLD.event_status, 'null'), ' to ', ifnull(NEW.event_status, 'null')), now());
+        END IF;
+        
+        IF
+        NEW.event_description <> OLD.event_description or (NEW.event_description is null and OLD.event_description is not null) or (NEW.event_description is not null and OLD.event_description is null)
+        THEN
+        INSERT INTO History(rec_type, foreign_id, description, insert_date_time) VALUES ('Event', NEW.event_id, concat('Event description changed from ', ifnull(OLD.event_description, 'null'), ' to ', ifnull(NEW.event_description, 'null')), now());
+        END IF;
+        
+        IF
+        NEW.photo_file_name <> OLD.photo_file_name or (NEW.photo_file_name is null and OLD.photo_file_name is not null) or (NEW.photo_file_name is not null and OLD.photo_file_name is null)
+        THEN
+        INSERT INTO History(rec_type, foreign_id, description, insert_date_time) VALUES ('Event', NEW.event_id, concat('Event photo file name changed from ', ifnull(OLD.photo_file_name, 'null'), ' to ', ifnull(NEW.photo_file_name, 'null')), now());
+        END IF;
+        
+    END$$
+DELIMITER ;

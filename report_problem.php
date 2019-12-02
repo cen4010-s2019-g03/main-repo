@@ -1,9 +1,19 @@
 <?php
-session_start();
+require('session_info.php');
 ?>
 <!doctype html>
 <html lang="en">
 	<head>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153631369-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-153631369-1');
+</script>
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,6 +27,7 @@ session_start();
 		<title>campusLive</title>
 	</head>
 	<body>
+		<?php include('header.php'); ?>
 		<h1>Report a Campus Problem</h1>
 		<div class="text-left ml-3 mb-2">
 			<a href="dashboard.php"><button type="button" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Go Back</button></a>
@@ -34,31 +45,49 @@ session_start();
 		
 			<form action="db_process/new_problem.php" id="viewProblemsForm" method="POST" enctype = "multipart/form-data">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-lg-5 col-sm-4">
+						<div class="form-group border p-2">
+							<label for="title">Title</label>
+							<input type="text" class="form-control" name="title" id="title">
+						</div>
+					</div>
+					<div class="col-lg-5 col-sm-4">
 						<div class="form-group border p-2">
 							<label for="location">Location</label>
 							<input type="text" class="form-control" name="location" id="location">
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="col-lg-2 col-sm-4">
+						<div class="form-group border p-2">
+							<label for="priority">Priority</label>
+							<select class="form-control" name="priority" id="priority">
+								<option value="1">High</option>
+								<option value="2" selected>Medium</option>
+								<option value="3">Low</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="form-group border p-2">
+							<label for="description">Description</label>
+							<textarea class="form-control" name="description" id="description" rows="5"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
 						<div class="form-group border p-2">
 							<label for="uploadPhoto">Upload a Photo</label>
 							<div class="row">
 								<div class="col-md-9">
-									<input type="file" class="form-control-file" name="uploadPhoto" id="uploadPhoto" accept="image/*" disabled>
+									<input type="file" class="form-control-file" name="uploadPhoto" id="uploadPhoto" accept="image/*" >
 								</div>
 								<div class="col-md-3">
 									<button type="button" class="btn btn-danger float-md-right" onclick="document.getElementById('uploadPhoto').value = '';" disabled>Remove</button>
 								</div>
 							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="form-group border p-2">
-							<label for="description">Description</label>
-							<textarea class="form-control" name="description" id="description" rows="5"></textarea>
 						</div>
 					</div>
 				</div>

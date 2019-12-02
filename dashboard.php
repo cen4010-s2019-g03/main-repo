@@ -1,6 +1,22 @@
+<?php
+require('session_info.php');
+?>
 <!doctype html>
 <html lang="en">
 	<head>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153631369-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-153631369-1');
+</script>
+
+
+
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,7 +30,16 @@
 		<title>CampusLive</title>
 	</head>
 	<body>
+		<?php include('header.php'); ?>
 		<h1>CampusLive Dashboard</h1>
+		<?php
+		if(isset($_SESSION['alerts'])){
+			foreach($_SESSION['alerts'] as $alert){
+				echo('<div class="alert alert-' . $alert[0] . '">' . $alert[1] . '</div>');
+			}
+			unset($_SESSION['alerts']);
+		}
+		?>
 		<div class="col-sm-6 offset-sm-3">
 			<div class="container">
 				<div class="row">
@@ -31,6 +56,10 @@
 				</div>
 			</div>
 		</div>
+		<br />
+		<h5>System Reports</h5>
+		<a href="TCPDF/reports/maintenance_summary_report.php" target="_blank">Maintenance Summary Report <i class="fas fa-file-pdf"></i></a> 
+		
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
