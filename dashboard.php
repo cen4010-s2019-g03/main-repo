@@ -3,7 +3,7 @@ require('session_info.php');
 ?>
 <!doctype html>
 <html lang="en">
-	<head>
+<head>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153631369-1"></script>
@@ -29,6 +29,7 @@ require('session_info.php');
 		
 		<title>CampusLive</title>
 	</head>
+
 	<body>
 		<?php include('header.php'); ?>
 		<h1>CampusLive Dashboard</h1>
